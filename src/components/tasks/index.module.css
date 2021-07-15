@@ -1,0 +1,69 @@
+.Tasks{
+    width:85%;
+    height:100vh;
+    background: #6059f7;
+    color:white;
+}
+
+
+.TasksContainer{
+    width: 100%;
+    height:100%;
+    display:flex;
+    justify-content: center;
+}
+
+.TaskContainer{
+    background-color:rgb(245, 244, 244);
+    margin: 1.2em 0 2em 1.2em;
+    width:31%;
+    color:black;
+    overflow-x:hidden;
+    overflow-y:scroll;
+    position: relative;
+}
+::-webkit-scrollbar {
+    display: none;
+}
+::-webkit-scrollbar-corner{
+    display: none;
+}
+
+.TaskContainer__List{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.TaskContainer__List h1{
+    width:100%;
+    text-align: center;
+    background: #6059f7;
+    letter-spacing: 0.1em;
+    color:white;
+    font-size: 1.3em;
+    padding: 1em;
+    margin:0;
+    transition: 0.3s;
+}
+.TaskContainer__ListTheme{
+    display: flex;
+    box-sizing: border-box;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top:1em;
+    width:85%;
+    padding:0.5em;
+    /*border-radius: 20px;*/
+    background-color:#FFFCF2;
+    transition:0.3s;
+    -webkit-box-shadow: 2px 14px 24px -10px rgba(66, 68, 90, 1);
+    -moz-box-shadow: 2px 14px 24px -10px rgba(66, 68, 90, 1);
+    box-shadow: 2px 14px 24px -10px rgba(66, 68, 90, 1);    
+}
+
+.TaskContainer__ListTheme:hover{
+    transform: scale(1.05);
+}

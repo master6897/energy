@@ -1,0 +1,12 @@
+input[type=button]{
+    width:50%;
+    color: white;
+    border:1px solid #6059f7;
+    background: #6059f7;
+    font-size: 1em;
+    padding: 0.5em;
+}
+
+input[type=button]{
+    cursor:pointer;
+}
