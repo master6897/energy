@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import './App.css';
 import { PrivateRoute } from "../privateRoute";
 import Navigation from '../navigation';
-import Content from '../content';
 import Login from '../login';
 import Tasks from '../tasks';
 import AddTask from "../tasks/add";
@@ -12,7 +11,7 @@ function App() {
   return (
     <Router>
       <div className="App">
-      <Navigation />
+      <Navigation  path='/navigation'/>
       <Switch>
         <Route path='/' exact component={Tasks}></Route>
         <Route path="/login" component={Login}></Route>

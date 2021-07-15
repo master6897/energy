@@ -20,6 +20,7 @@ class Navigation extends React.Component{
 
     clearStorage(){
         sessionStorage.clear();
+        window.location.reload(true);
     }
     render(){
         return(

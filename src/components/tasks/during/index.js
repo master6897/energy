@@ -1,4 +1,4 @@
-import React, { useDebugValue } from 'react';
+import React from 'react';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styles from '../index.module.css';
@@ -21,17 +21,17 @@ class During extends React.Component{
             <div className={styles.TaskContainer}>
                 <div className={styles.TaskContainer__List}>
                     <h1>W trakcie</h1>
-                    {this.state.data.map((tasks) => {
-                        <>{tasks.status == 1 ? 
+                    {this.state.data.map((tasks) => (
+                        <>{tasks.status === 1 ? 
                             <div className={styles.TaskContainer__ListTheme} key={tasks.id}>
-                            <h3>{tasks.Title}</h3>
-                            <p>{tasks.Description}</p>
-                            <Button name="Szczegóły"></Button>
+                                <h3>{tasks.Title}</h3>
+                                <p>{tasks.Description}</p>
+                                <Button name="Szczegóły"></Button>
                         </div>
                         :null
                         }
                         </>
-                    })}
+                    ))}
                 </div>
             </div>
         )

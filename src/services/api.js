@@ -21,14 +21,25 @@ const putTask = (title,description,num_employees) =>{
       return err;
     }
   }
-
-  const putUserToTask = async(taskId,value,headers) =>{
+  
+  const getTasksById = async (taskId) =>{
     try{
-      const pull = (await axios.put(`http://localhost:1337/tasks?id=${taskId}`,value,headers));
+      const response = (await axios.get(`http://localhost:1337/tasks?id=${taskId}`)).data;
+      return response;
+    }catch(err){
+      return err;
+    }
+  }
+  const putUserToTask = async(taskId,users) =>{
+    try{
+      const pull = (await axios.put(`http://localhost:1337/tasks/${taskId}`,{
+        status: 1,
+        users: users
+      }));
       return pull;
     }catch(err){
       return err;
     }
   }
 
-  export {putTask,getTasks,putUserToTask};
+  export {putTask,getTasks,putUserToTask,getTasksById};

@@ -2,14 +2,15 @@ import React from 'react';
 
 import styles from '../index.module.css';
 import Button from '../../shared/Button';
-import {getTasks} from '../../../services/api';
+import {getTasks, putUserToTask,getTasksById} from '../../../services/api';
 
 class ToDo extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
           data: [],
-          user: null
+          user: null,
+          taskById: null
         };
     }
     async componentDidMount(){
@@ -20,6 +21,12 @@ class ToDo extends React.Component{
         }else{
             this.setState({ user: user});
         }
+        console.log(this.state.data);
+    }
+    async takeTask(taskId, user){
+        this.setState({ taskById : await getTasksById(taskId) });
+        const users = [...this.state.taskById[0].users, user];
+        putUserToTask(taskId,users);
     }
     render(){
         return(
@@ -27,11 +34,11 @@ class ToDo extends React.Component{
                 <div className={styles.TaskContainer__List}>
                     <h1>Do zrobienia</h1>
                     {this.state.data.map((tasks) => (
-                        <> {tasks.status == 0 ? 
+                        <> {tasks.status === 0 ? 
                             <div className={styles.TaskContainer__ListTheme} key={tasks.id}>
                                 <h3>{tasks.Title}</h3>
                                 <p>{tasks.Description}</p>
-                                {this.state.user ?<Button name="Weź zadanie"></Button>:null}
+                                {this.state.user ?<Button name="Weź zadanie" onClick={this.takeTask(tasks.id,this.state.user.user)}></Button>:null}
                             </div>
                         : null}
                     </>

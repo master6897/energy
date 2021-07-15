@@ -20,17 +20,17 @@ class Done extends React.Component{
             <div className={styles.TaskContainer}>
                 <div className={styles.TaskContainer__List}>
                     <h1>Zakończone</h1>
-                    {this.state.data.map((tasks) => {
-                        <>{tasks.status == 2 ? 
+                    {this.state.data.map((tasks) => (
+                        <>{tasks.status === 2 ? 
                             <div className={styles.TaskContainer__ListTheme} key={tasks.id}>
-                            <h3>{tasks.Title}</h3>
-                            <p>{tasks.Description}</p>
-                            <Button name="Szczegóły"></Button>
+                                <h3>{tasks.Title}</h3>
+                                <p>{tasks.Description}</p>
+                                <Button name="Szczegóły"></Button>
                         </div>
                         :null
                         }
                         </>
-                    })}
+                    ))}
                 </div>
             </div>
         )
