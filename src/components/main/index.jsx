@@ -6,6 +6,7 @@ import Navigation from '../navigation';
 import Login from '../login';
 import Tasks from '../tasks';
 import AddTask from "../tasks/add";
+import Task from "../tasks/task";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path='/' exact component={Tasks}></Route>
         <Route path="/login" component={Login}></Route>
         <Route path="/addTask" component={AddTask}></Route>
+        <Route path="/tasks/:id" exact component={Task}></Route>
       </Switch>
       </div>
     </Router>

@@ -22,19 +22,19 @@ const putTask = (title,description,num_employees) =>{
     }
   }
   
-  const getTasksById = async (taskId) =>{
+  const getTasksById = async(taskId) =>{
     try{
-      const response = (await axios.get(`http://localhost:1337/tasks?id=${taskId}`)).data;
+      const response = (await axios.get(`http://localhost:1337/tasks?id=${taskId}`));
       return response;
     }catch(err){
       return err;
     }
   }
-  const putUserToTask = async(taskId,users) =>{
+  const putUserToTask = async(taskId,usersTab) =>{
     try{
       const pull = (await axios.put(`http://localhost:1337/tasks/${taskId}`,{
         status: 1,
-        users: users
+        users: usersTab
       }));
       return pull;
     }catch(err){

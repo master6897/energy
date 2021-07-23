@@ -1,6 +1,7 @@
 import React from 'react';
 
 import styles from '../index.module.css';
+import { Link } from 'react-router-dom';
 import Button from '../../shared/Button';
 import {getTasks, putUserToTask,getTasksById} from '../../../services/api';
 
@@ -21,12 +22,6 @@ class ToDo extends React.Component{
         }else{
             this.setState({ user: user});
         }
-        console.log(this.state.data);
-    }
-    async takeTask(taskId, user){
-        this.setState({ taskById : await getTasksById(taskId) });
-        const users = [...this.state.taskById[0].users, user];
-        putUserToTask(taskId,users);
     }
     render(){
         return(
@@ -38,7 +33,7 @@ class ToDo extends React.Component{
                             <div className={styles.TaskContainer__ListTheme} key={tasks.id}>
                                 <h3>{tasks.Title}</h3>
                                 <p>{tasks.Description}</p>
-                                {this.state.user ?<Button name="Weź zadanie" onClick={this.takeTask(tasks.id,this.state.user.user)}></Button>:null}
+                                {this.state.user ?<Link to={{pathname:`/tasks/${tasks.id}`}}>Weź zadanie</Link>:null}
                             </div>
                         : null}
                     </>
