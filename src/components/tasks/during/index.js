@@ -1,8 +1,6 @@
 import React from 'react';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styles from '../index.module.css';
-import Button from '../../shared/Button';
 import {getTasks} from '../../../services/api';
 import { Link } from 'react-router-dom';
 

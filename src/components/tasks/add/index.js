@@ -26,6 +26,7 @@ class AddTask extends React.Component{
       updateTasks(){
         putTask(this.state.title, this.state.description, this.state.num_employees);
         this.props.history.push('/');
+        window.location.reload(true);
       }
 
     render(){

@@ -27,10 +27,6 @@
     width: 100%;
     margin-bottom: 1em;
 }
-.UserTasksData a{
-    position:relative;
-    bottom:0;
-}
 table th{
     background-color: #6059f7;
     color: white;
@@ -46,7 +42,7 @@ table tr:nth-child(odd){
     background-color: #f2f2f2
 }
 
-td a, button{
+td a,button{
     text-decoration: none;
     color: white;
     border:1px solid #6059f7;
@@ -57,6 +53,6 @@ td a, button{
     width: 100%;
     transition: 0.2s;
 }
-td a, button:hover{
-    transform: scale(1.05);
+td button:hover{
+    transform: scale(1.02);
 }

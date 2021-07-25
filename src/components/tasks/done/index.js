@@ -1,8 +1,8 @@
 import React from 'react';
 
 import styles from '../index.module.css';
-import Button from '../../shared/Button';
 import {getTasks} from '../../../services/api';
+import { Link } from 'react-router-dom';
 
 class Done extends React.Component{
     constructor(props) {
@@ -25,7 +25,7 @@ class Done extends React.Component{
                             <div className={styles.TaskContainer__ListTheme} key={tasks.id}>
                                 <h3>{tasks.Title}</h3>
                                 <p>{tasks.Description}</p>
-                                <Button name="Szczegóły"></Button>
+                                <Link to={{ pathname:`details/${tasks.id}` }} key={tasks.id}>Szczegóły</Link>
                         </div>
                         :null
                         }

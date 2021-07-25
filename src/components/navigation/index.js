@@ -17,10 +17,6 @@ class Navigation extends React.Component{
             this.setState({ user: user});
         }
     }
-    componentDidUpdate(){
-        const user = JSON.parse(sessionStorage.getItem('credentials'));
-    }
-
     clearStorage(){
         sessionStorage.clear();
         window.location.reload(true);

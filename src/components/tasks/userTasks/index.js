@@ -52,7 +52,7 @@ class UserTasks extends React.Component{
                                         <td>{userTasks.Description}</td>
                                         {userTasks.status === 1 ? <td>
                                             <button onClick={() => this.finishUserTask(userTasks.id)}>Zakończ</button>
-                                        </td> : <td><Link to={{ pathname:`details/${userTasks.id}`}}>Szczegóły</Link></td>}
+                                        </td> : <td><button><Link to={{ pathname:`details/${userTasks.id}`}}>Szczegóły</Link></button></td>}
                                     </tr>
                                     : null
                                 }
