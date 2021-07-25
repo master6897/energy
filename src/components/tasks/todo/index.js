@@ -1,9 +1,10 @@
 import React from 'react';
 
 import styles from '../index.module.css';
-import { Link } from 'react-router-dom';
 import Button from '../../shared/Button';
 import {getTasks, putUserToTask,getTasksById} from '../../../services/api';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEdit, faTrash} from '@fortawesome/free-solid-svg-icons';
 
 class ToDo extends React.Component{
     constructor(props) {
@@ -23,6 +24,13 @@ class ToDo extends React.Component{
             this.setState({ user: user});
         }
     }
+
+    async takeTask(taskId){
+        this.setState({ taskById: (await getTasksById(taskId)).data});
+        const data = [...this.state.taskById[0]?.users, this.state.user?.user];
+        putUserToTask(taskId,data);
+        window.location.reload(true);
+    }
     render(){
         return(
             <div className={styles.TaskContainer}>
@@ -31,9 +39,15 @@ class ToDo extends React.Component{
                     {this.state.data.map((tasks) => (
                         <> {tasks.status === 0 ? 
                             <div className={styles.TaskContainer__ListTheme} key={tasks.id}>
+                                {this.state.user? <>{this.state.user?.user.role.name === "Authenticated" ? 
+                                <div className={styles.ManageTask}>
+                                    <span><FontAwesomeIcon icon={faEdit}></FontAwesomeIcon></span>
+                                    <span><FontAwesomeIcon icon={faTrash}></FontAwesomeIcon></span>
+                                </div> : null} </> : null}
                                 <h3>{tasks.Title}</h3>
                                 <p>{tasks.Description}</p>
-                                {this.state.user ?<Link to={{pathname:`/tasks/${tasks.id}`}}>Weź zadanie</Link>:null}
+                                {this.state.user ?
+                                <Button name="Weź zadanie" onClick={() => this.takeTask(tasks.id)}></Button>:null}
                             </div>
                         : null}
                     </>

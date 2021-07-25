@@ -42,4 +42,15 @@ const putTask = (title,description,num_employees) =>{
     }
   }
 
-  export {putTask,getTasks,putUserToTask,getTasksById};
+  const finishTask = async(taskId) => {
+    try{
+      const pull = (await axios.put(`http://localhost:1337/tasks/${taskId}`,{
+        status: 2
+      }));
+      return pull
+    }catch(err){
+      return err;
+    }
+  }
+
+  export {putTask,getTasks,putUserToTask,getTasksById,finishTask};

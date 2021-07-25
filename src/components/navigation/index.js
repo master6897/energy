@@ -17,10 +17,14 @@ class Navigation extends React.Component{
             this.setState({ user: user});
         }
     }
+    componentDidUpdate(){
+        const user = JSON.parse(sessionStorage.getItem('credentials'));
+    }
 
     clearStorage(){
         sessionStorage.clear();
         window.location.reload(true);
+        this.history.push('/');
     }
     render(){
         return(
@@ -32,10 +36,12 @@ class Navigation extends React.Component{
                 <hr />
                 <div className={styles.Navbar}>
                     <NavLink to='/' exact activeClassName={styles.Selected}>Zadania</NavLink>
+                    {this.state.user ? <NavLink to='/userTasks' activeClassName={styles.Selected}>Moje zadania</NavLink> : null}
+                    
                     {this.state.user ? <>{this.state.user.user.role.name === "Authenticated" ? 
                 <NavLink to='/addTask' activeClassName={styles.Selected}>Dodaj zadanie</NavLink> : null
                 }</> : null}
-                    <NavLink to='/login' activeClassName={styles.Selected}>{this.state.user ? <span onClick={this.clearStorage}>Wyloguj się</span> : <span>Zaloguj się</span>}</NavLink>
+                    {this.state.user ? <NavLink to='/login' activeClassName={styles.Selected} onClick={this.clearStorage}>Wyloguj się</NavLink> : <NavLink to='/login'>Zaloguj się</NavLink>}
                 </div>
                 <hr />
                 <div className={styles.Authors}>

@@ -6,7 +6,8 @@ import Navigation from '../navigation';
 import Login from '../login';
 import Tasks from '../tasks';
 import AddTask from "../tasks/add";
-import Task from "../tasks/task";
+import Details from "../tasks/details";
+import UserTasks from "../tasks/userTasks";
 
 function App() {
   return (
@@ -17,7 +18,9 @@ function App() {
         <Route path='/' exact component={Tasks}></Route>
         <Route path="/login" component={Login}></Route>
         <Route path="/addTask" component={AddTask}></Route>
-        <Route path="/tasks/:id" exact component={Task}></Route>
+        <Route path="/details/:id" component={Details}></Route>
+        <Route path="/userTasks" component={UserTasks}></Route>
+        <Route path="/finishTask/:id" component={UserTasks}></Route>
       </Switch>
       </div>
     </Router>

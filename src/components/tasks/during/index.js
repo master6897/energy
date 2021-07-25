@@ -4,17 +4,24 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styles from '../index.module.css';
 import Button from '../../shared/Button';
 import {getTasks} from '../../../services/api';
+import { Link } from 'react-router-dom';
 
 class During extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
           data: [],
-          user: null
+          user: null,
+          clicked: false
         };
+        this.showDetails = this.showDetails.bind(this);
     }
     async componentDidMount(){
         this.setState({ data: await getTasks() });
+    }
+
+    showDetails(){
+        this.setState({ clicked: !this.state.clicked});
     }
     render(){
         return(
@@ -26,7 +33,11 @@ class During extends React.Component{
                             <div className={styles.TaskContainer__ListTheme} key={tasks.id}>
                                 <h3>{tasks.Title}</h3>
                                 <p>{tasks.Description}</p>
-                                <Button name="Szczegóły"></Button>
+                                <div className={styles.TaskContainerUsers}>
+                                    <p>Liczba pracowników: </p>
+                                    {tasks.users.length}
+                                </div>
+                                <Link to={{ pathname:`details/${tasks.id}` }} key={tasks.id}>Szczegóły</Link>
                         </div>
                         :null
                         }
