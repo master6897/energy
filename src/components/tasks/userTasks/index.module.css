@@ -1,6 +1,6 @@
 .UserTasksContainer{
     height:100vh;
-    width:85%;
+    flex: 1 1 auto;
     background: #6059f7;
     display: flex;
     align-items: center;

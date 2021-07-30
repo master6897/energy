@@ -1,12 +1,51 @@
+/*Toogle*/
+.Toggle{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top:1em;
+    left: 25em;
+    width: 50px;
+    height: 50px;
+    background: inherit;
+    border-radius: 10px;
+    cursor:pointer;
+    z-index: 1;
+    -webkit-transition: all 0.5s ease-in-out;
+}
+.Toggle.Active{
+    left:11em;
+    background-color:white;
+    color: black;
+    -webkit-transition: all 0.5s ease-in-out;
+}
+.Toggle svg{
+    position:absolute;
+    font-size: 1.5em;
+    display: none;
+}
+.Toggle svg.Open, .Toggle.Active svg.Close{
+    display:block;
+}
+.Toggle svg.Close, .Toggle.Active svg.Open{
+    display:none;
+}
+
 /*Navigation*/
 .Navigation{
     display: flex;
     flex-direction:column;
     align-items: center;
-    width:15%;
+    width:5%;
+    overflow: hidden;
     background-color: #252422;
     color:#FFFCF2;
     height:100vh;
+    -webkit-transition: all 0.5s ease-in-out;
+}
+.Navigation.Active{
+    width:15%;
 }
 .Navigation hr{
     border-top: 2px solid #FFFCF2;
@@ -44,8 +83,18 @@
 .NavbarContent span:nth-child(1){
     width: 20%;
 }
-.NavbarContent span:nth-child(2){
+.Description{
+    text-align: left;
     width:80%;
+}
+.Description.Active{
+    display: none;
+}
+svg{
+    -webkit-transition: all 0.5s ease-in-out;
+}
+svg.Active{
+    font-size: 1.3em;
 }
 .Navbar a:hover{
     background: rgb(140,97,255);
@@ -65,6 +114,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-wrap: wrap;
     font-size:1.4em;
 }
 .Logo p:nth-child(1){
@@ -97,3 +147,5 @@
     color: white;
     border-radius:20px 0px 0px 20px;
 }
+
+

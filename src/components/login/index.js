@@ -41,7 +41,7 @@ class Login extends React.Component {
             <h1>LOGOWANIE</h1>
           <input type="text" placeholder="Nazwa użytkownika" onChange={this.usernameHandler}></input>
           <input type="password" placeholder="Hasło" onChange={this.passwordHandler}></input>
-          {this.state.clicked ? <> {this.state.passed ? <span style={{color:"green"}}>Pomyślnie zalogowano!</span> : <span style={{color:"red"}}>Niepoprawna nazwa użytkownika lub hasło</span>}</> : null}
+          {this.state.clicked ? <> {this.state.passed ? <span className={styles.LoginPassed}>Pomyślnie zalogowano!</span> : <span className={styles.LoginError}>Niepoprawna nazwa użytkownika lub hasło</span>}</> : null}
           <input type="button" value="Zaloguj" onClick={this.getAuth}></input>
         </div>
       </div>
