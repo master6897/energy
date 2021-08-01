@@ -11,7 +11,7 @@ class AddTask extends React.Component{
           description: "",
           num_employees:0,
         };
-        this.updateTasks = this.updateTasks.bind(this);
+        this.addTasks = this.addTasks.bind(this);
       }
       titleHandler = (evt) =>{
           this.setState({ title: evt.target.value});
@@ -23,7 +23,7 @@ class AddTask extends React.Component{
           this.setState({ num_employees: evt.target.value});
       }
 
-      updateTasks(){
+      addTasks(){
         putTask(this.state.title, this.state.description, this.state.num_employees);
         this.props.history.push('/');
         window.location.reload(true);
@@ -51,7 +51,7 @@ class AddTask extends React.Component{
                     {title === "" || num_employees < 0 ? (
                         <input type="button" value="Dodaj zadanie" style={{visibility: "hidden"}}></input>
                     ) : (
-                        <input type="button" value="Dodaj zadanie" onClick={this.updateTasks}></input>
+                        <input type="button" value="Dodaj zadanie" onClick={this.addTasks}></input>
                     )}
                 </div>
             </div>

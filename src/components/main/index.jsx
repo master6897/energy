@@ -7,6 +7,7 @@ import Tasks from '../tasks';
 import AddTask from "../tasks/add";
 import Details from "../tasks/details";
 import UserTasks from "../tasks/userTasks";
+import UpdateTask from "../tasks/update";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/details/:id" component={Details}></Route>
         <Route path="/userTasks" component={UserTasks}></Route>
         <Route path="/finishTask/:id" component={UserTasks}></Route>
+        <Route path="/updateTask/:id" component={UpdateTask}></Route>
       </Switch>
       </div>
     </Router>

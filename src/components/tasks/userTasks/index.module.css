@@ -1,5 +1,6 @@
 .UserTasksContainer{
     height:100vh;
+    width:85%;
     flex: 1 1 auto;
     background: #6059f7;
     display: flex;
@@ -55,4 +56,10 @@ td a,button{
 }
 td button:hover{
     transform: scale(1.02);
+}
+
+.Buttons{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }

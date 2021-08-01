@@ -1,4 +1,5 @@
 .DetailsPopUp{
+    flex: 1 1 auto;
     height:100vh;
     width:85%;
     background: #6059f7;

@@ -53,4 +53,26 @@ const putTask = (title,description,num_employees) =>{
     }
   }
 
-  export {putTask,getTasks,putUserToTask,getTasksById,finishTask};
+  const deleteTask = async(taskId) => {
+    try{
+      const pull = (await axios.delete(`http://localhost:1337/tasks/${taskId}`));
+      return pull
+    }catch(err){
+      return err;
+    }
+  }
+  const updateTask = async(taskId,title,description,num_employees) =>{
+    try{
+      const pull = (await axios.put(`http://localhost:1337/tasks/${taskId}`,{
+        Title: title,
+        Description: description,
+        Num_employees: num_employees
+      }));
+      return pull;
+    }catch(err){
+      return err;
+    }
+  }
+
+
+  export {putTask,getTasks,putUserToTask,getTasksById,finishTask,deleteTask, updateTask};

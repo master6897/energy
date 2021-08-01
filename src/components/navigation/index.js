@@ -1,7 +1,7 @@
 import React from 'react';
 import './toggle.css';
 import {NavLink} from "react-router-dom";
-import { faTasks, faUser, faPlus, faSignOutAlt, faSignInAlt, faBars, faTimes} from '@fortawesome/free-solid-svg-icons';
+import { faTasks, faUser, faPlus, faSignOutAlt, faSignInAlt, faBars, faTimes, faUserCheck} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class Navigation extends React.Component{
@@ -60,6 +60,7 @@ class Navigation extends React.Component{
                         </div> 
                     </NavLink>
                     {this.state.user ? 
+                    
                     <NavLink to='/userTasks' activeClassName="Selected">
                         <div className="NavbarContent">
                             <span><FontAwesomeIcon icon={faUser}> </FontAwesomeIcon></span> 
@@ -69,6 +70,7 @@ class Navigation extends React.Component{
                         : null}
                     
                     {this.state.user ? <>{this.state.user.user.role.name === "Authenticated" ? 
+                
                 <NavLink to='/addTask' activeClassName="Selected">
                     <div className="NavbarContent">
                         <span><FontAwesomeIcon icon={faPlus}> </FontAwesomeIcon></span> 
@@ -91,10 +93,13 @@ class Navigation extends React.Component{
                              </NavLink>}
                 </div>
                 <hr />
-                <div className="Authors">
-                    <p><strong>Copyright @</strong>{new Date().getFullYear()}</p>
-                    <p><strong>Created by: </strong>Kamil Chrobok, Tymoteusz Łomozik, Marcin Puc</p>
-                </div>
+                {this.state.user ? 
+                    <div className="Authors">
+                    <p><FontAwesomeIcon icon={faUserCheck}></FontAwesomeIcon></p>
+                    <p>Witaj <strong>{this.state.user?.user.username}</strong> !</p>
+                </div> : null
+                }
+                
             </div>
         )
     }

@@ -99,7 +99,16 @@
     text-align: right;
     transition:0.2s;
 }
-.ManageTask span:nth-child(1):hover{
+.ManageTask span a{
+    cursor: pointer;
+    margin: 0 0.3em;
+    text-align: right;
+    transition:0.2s;
+    background: inherit;
+    color: black;
+    border:none;
+}
+.ManageTask span a:nth-child(1):hover{
     color: #6059f7;
 }
 .ManageTask span:nth-child(2):hover{

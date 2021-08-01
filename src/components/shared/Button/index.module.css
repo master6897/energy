@@ -1,9 +1,10 @@
 .Button{
-    width:50%;
+    width:40%;
     color: white;
     border:1px solid #6059f7;
     background: #6059f7;
     font-size: 1em;
     padding: 0.5em;
     cursor:pointer;
+    margin: 0.5em;
 }
