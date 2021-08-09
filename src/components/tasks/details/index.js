@@ -31,11 +31,16 @@ class Details extends React.Component{
                         <tr>
                             <th>Imię pracownika</th>
                             <th>Data podjęcia zadania</th>
+                            <th>Data zakończenia zadania</th>
                         </tr>
                     {this.state.data[0]?.users.map((userTask) =>(
                         <tr>
                             <td>{userTask.username}</td>
-                            <td>{this.state.data[0]?.updated_at}</td>
+                            <td>{this.state.data[0]?.date}</td>
+                            {this.state.data[0]?.finishDate === null? 
+                                <td>Jeszcze nie ukończono</td> :
+                                <td>{this.state.data[0]?.finishDate}</td>   
+                            }
                         </tr>
                     ))}
                     </table>

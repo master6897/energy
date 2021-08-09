@@ -11,13 +11,14 @@ class UserTasks extends React.Component{
         this.state={
             user: null,
             tasks: null,
+            sortedTasks: [],
             taskId: null,
             clicked: false
         }
     }
 
     async componentDidMount(){
-        this.setState({ tasks: (await getTasks())});
+        this.setState({ tasks: (await getTasks()).reverse()});
         this.setState({ user: JSON.parse(sessionStorage.getItem('credentials'))});
 
     }
@@ -51,7 +52,7 @@ class UserTasks extends React.Component{
                                         </td>
                                         <td>{userTasks.Description}</td>
                                         {userTasks.status === 1 ? <td>
-                                            <button onClick={() => this.finishUserTask(userTasks.id)}>Zakończ</button>
+                                            <button onClick={() => this.finishUserTask(userTasks.id)} className={styles.ButtonFinish}>Zakończ</button>
                                         </td> : <td><button><Link to={{ pathname:`details/${userTasks.id}`}}>Szczegóły</Link></button></td>}
                                     </tr>
                                     : null

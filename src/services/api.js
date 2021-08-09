@@ -1,5 +1,13 @@
 import axios from "axios";
 
+function join(t, a, s) {
+  function format(m) {
+     let f = new Intl.DateTimeFormat('pl', m);
+     return f.format(t);
+  }
+  return a.map(format).join(s);
+}
+
 const putTask = (title,description,num_employees) =>{
     try{
       const post = (axios.post(`http://localhost:1337/tasks`,{
@@ -31,9 +39,18 @@ const putTask = (title,description,num_employees) =>{
     }
   }
   const putUserToTask = async(taskId,usersTab) =>{
+    var formatter = new Intl.DateTimeFormat( 'pl', {
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric',
+      hour: 'numeric',
+      minute: 'numeric'
+    } );
+    let data = formatter.format(new Date());
     try{
       const pull = (await axios.put(`http://localhost:1337/tasks/${taskId}`,{
         status: 1,
+        date: data,
         users: usersTab
       }));
       return pull;
@@ -43,9 +60,18 @@ const putTask = (title,description,num_employees) =>{
   }
 
   const finishTask = async(taskId) => {
+    var formatter = new Intl.DateTimeFormat( 'pl', {
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric',
+      hour: 'numeric',
+      minute: 'numeric'
+    } );
+    let data = formatter.format(new Date());
     try{
       const pull = (await axios.put(`http://localhost:1337/tasks/${taskId}`,{
-        status: 2
+        status: 2,
+        finishDate: data
       }));
       return pull
     }catch(err){
